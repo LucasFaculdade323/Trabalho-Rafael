@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,17 @@
     <link rel="stylesheet" href="css/style cardapio.css">
 </head>
 <body>
-    <div class="container">
+
+<header>
+    <h1>Meu Cardápio</h1>
+
+    <nav>
+        <a href="index.html">Cadastro</a>
+        <a href="cardapio.html">Cardápio</a>
+    </nav>
+</header>
+
+<div class="container">
     <h3>Salgados:</h3>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="coxinha" value="Coxinha">Coxinha — R$ 5,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="esfiha" value="esfiha">esfiha — R$ 5,00</label>
@@ -25,18 +36,19 @@
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="suco" value="Suco">Suco — R$ 5,00</label>
     <label><input type="checkbox" data-preco="3.00" name="entrada" id="agua" value="Água">Água — R$ 3,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="refrigerante" value="Refrigerante">Refrigerante — R$ 5,00</label>
-   
+
     <h3>Doces:</h3>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-chocolate" value="Bolo de Chocolate">Bolo de Chocolate — R$ 6,00</label>
-    <label><input type="checkbox" data-preco="5.00" name="entrada" id="pudim" value="Pudim">Pudim — R$ 5,00</label>         
-
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="pudim" value="Pudim">Pudim — R$ 5,00</label>
     <label><input type="checkbox" data-preco="2.50" name="entrada" id="brigadeiro" value="Brigadeiro">Brigadeiro — R$ 2,50</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-cenoura" value="Bolo de Cenoura">Bolo de Cenoura — R$ 6,00</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-chocolate-2" value="Bolo de Chocolate">Bolo de Chocolate — R$ 6,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="sorvete" value="Sorvete">Sorvete — R$ 5,00</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="brownie" value="Brownie">Brownie — R$ 6,00</label>
-<p>Total: <strong id="total" aria-live="polite">R$ 0,00</strong></p>
+
+    <p>Total: <strong id="total" aria-live="polite">R$ 0,00</strong></p>
 </div>
+
 <script>
     const itens = document.querySelectorAll('.container input[type="checkbox"]');
     const total = document.getElementById('total');
@@ -62,6 +74,6 @@
 
     calcularTotal();
 </script>
+
 </body>
 </html>
-
