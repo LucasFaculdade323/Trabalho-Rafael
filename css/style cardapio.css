@@ -1,0 +1,94 @@
+﻿body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    min-height: 1100px;
+    margin: 0 auto;
+    padding: 100px 70px;
+
+    box-sizing: border-box;
+
+    background-image: url("../img/Quadro Verde de Bambu sem Texto.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+.container h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.container label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.container input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.container p {
+    margin-top: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.container button {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        min-height: 1100px;
+        padding: 90px 35px;
+    }
+
+    .container h3 {
+        font-size: 20px;
+    }
+
+    .container label {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardápio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style cardapio.css">
+</head>
+<body>
+    <div class="container">
+    <h3>Salgados:</h3>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="coxinha" value="Coxinha">Coxinha — R$ 5,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="esfiha" value="esfiha">esfiha — R$ 5,00</label>
+    <label><input type="checkbox" data-preco="6.00" name="entrada" id="pastel" value="Pastel">Pastel — R$ 6,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="empada" value="Empada">Empada — R$ 5,00</label>
+
+    <h3>Lanches:</h3>
+    <label><input type="checkbox" data-preco="8.00" name="entrada" id="sanduiche-natural" value="Sanduíche natural">Sanduíche natural — R$ 8,00</label>
+    <label><input type="checkbox" data-preco="7.00" name="entrada" id="misto-quente" value="Misto-quente">Misto-quente — R$ 7,00</label>
+    <label><input type="checkbox" data-preco="12.00" name="entrada" id="hamburguer" value="Hambúrguer">Hambúrguer — R$ 12,00</label>
+    <label><input type="checkbox" data-preco="9.00" name="entrada" id="cachorro-quente" value="Cachorro-quente">Cachorro-quente — R$ 9,00</label>
+
+    <h3>Bebidas:</h3>
+    <label><input type="checkbox" data-preco="3.00" name="entrada" id="cafe" value="Café">Café — R$ 3,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="suco" value="Suco">Suco — R$ 5,00</label>
+    <label><input type="checkbox" data-preco="3.00" name="entrada" id="agua" value="Água">Água — R$ 3,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="refrigerante" value="Refrigerante">Refrigerante — R$ 5,00</label>
+   
+    <h3>Doces:</h3>
+    <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-chocolate" value="Bolo de Chocolate">Bolo de Chocolate — R$ 6,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="pudim" value="Pudim">Pudim — R$ 5,00</label>         
+
+    <label><input type="checkbox" data-preco="2.50" name="entrada" id="brigadeiro" value="Brigadeiro">Brigadeiro — R$ 2,50</label>
+    <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-cenoura" value="Bolo de Cenoura">Bolo de Cenoura — R$ 6,00</label>
+    <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-chocolate-2" value="Bolo de Chocolate">Bolo de Chocolate — R$ 6,00</label>
+    <label><input type="checkbox" data-preco="5.00" name="entrada" id="sorvete" value="Sorvete">Sorvete — R$ 5,00</label>
+    <label><input type="checkbox" data-preco="6.00" name="entrada" id="brownie" value="Brownie">Brownie — R$ 6,00</label>
+<p>Total: <strong id="total" aria-live="polite">R$ 0,00</strong></p>
+</div>
+<script>
+    const itens = document.querySelectorAll('.container input[type="checkbox"]');
+    const total = document.getElementById('total');
+
+    function calcularTotal() {
+        let centavos = 0;
+
+        itens.forEach(item => {
+            if (item.checked) {
+                centavos += Math.round(Number(item.dataset.preco) * 100);
+            }
+        });
+
+        total.textContent = (centavos / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
+    }
+
+    itens.forEach(item => {
+        item.addEventListener('change', calcularTotal);
+    });
+
+    calcularTotal();
+</script>
+</body>
+</html>
+
