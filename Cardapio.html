@@ -1,43 +1,63 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Título da página -->
     <title>Cardápio</title>
+
+    <!-- Ajuste da página para diferentes tamanhos de tela -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Linka o css na página cardapio -->
     <link rel="stylesheet" href="css/style cardapio.css">
 </head>
+
 <body>
 
+<!-- Cabeçalho da página -->
 <header>
     <h1>Meu Cardápio</h1>
 
+    <!-- Menu de navegação -->
     <nav>
         <a href="index.html">Cadastro</a>
         <a href="cardapio.html">Cardápio</a>
     </nav>
 </header>
 
+<!-- Container principal que contém os produtos -->
 <div class="container">
+
+    <!-- Categoria de salgados -->
     <h3>Salgados:</h3>
+
+    <!-- Cada checkbox permite selecionar um produto -->
+    <!-- data-preco armazena o valor utilizado no cálculo -->
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="coxinha" value="Coxinha">Coxinha — R$ 5,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="esfiha" value="esfiha">esfiha — R$ 5,00</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="pastel" value="Pastel">Pastel — R$ 6,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="empada" value="Empada">Empada — R$ 5,00</label>
 
+    <!-- Categoria de lanches -->
     <h3>Lanches:</h3>
+
     <label><input type="checkbox" data-preco="8.00" name="entrada" id="sanduiche-natural" value="Sanduíche natural">Sanduíche natural — R$ 8,00</label>
     <label><input type="checkbox" data-preco="7.00" name="entrada" id="misto-quente" value="Misto-quente">Misto-quente — R$ 7,00</label>
     <label><input type="checkbox" data-preco="12.00" name="entrada" id="hamburguer" value="Hambúrguer">Hambúrguer — R$ 12,00</label>
     <label><input type="checkbox" data-preco="9.00" name="entrada" id="cachorro-quente" value="Cachorro-quente">Cachorro-quente — R$ 9,00</label>
 
+    <!-- Categoria de bebidas -->
     <h3>Bebidas:</h3>
+
     <label><input type="checkbox" data-preco="3.00" name="entrada" id="cafe" value="Café">Café — R$ 3,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="suco" value="Suco">Suco — R$ 5,00</label>
     <label><input type="checkbox" data-preco="3.00" name="entrada" id="agua" value="Água">Água — R$ 3,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="refrigerante" value="Refrigerante">Refrigerante — R$ 5,00</label>
 
+    <!-- Categoria de doces -->
     <h3>Doces:</h3>
+
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="bolo-de-chocolate" value="Bolo de Chocolate">Bolo de Chocolate — R$ 6,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="pudim" value="Pudim">Pudim — R$ 5,00</label>
     <label><input type="checkbox" data-preco="2.50" name="entrada" id="brigadeiro" value="Brigadeiro">Brigadeiro — R$ 2,50</label>
@@ -46,33 +66,107 @@
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="sorvete" value="Sorvete">Sorvete — R$ 5,00</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="brownie" value="Brownie">Brownie — R$ 6,00</label>
 
+    <!-- Exibe o valor total dos produtos selecionados -->
+    <!-- O JavaScript atualiza o elemento identificado por total -->
     <p>Total: <strong id="total" aria-live="polite">R$ 0,00</strong></p>
+    <button type="button" id="finalizarPedido">Finalizar pedido</button>
+
 </div>
 
+<!-- JavaScript para cálcular os produtos -->
 <script>
+
+    // Seleciona todos os checkboxes que estão dentro do container
     const itens = document.querySelectorAll('.container input[type="checkbox"]');
+
+    // Localiza o elemento HTML onde o total será exibido
     const total = document.getElementById('total');
 
+    // Função responsável por calcular o valor dos produtos selecionados
     function calcularTotal() {
+
+        // Começa o cálculo com o valor de zero 
         let centavos = 0;
 
+       // Verifica cada produto do cardápio, um por vez
         itens.forEach(item => {
+
+            // Verifica se o produto está selecionado
             if (item.checked) {
+
+                // Converte o preço em número e depois em centavos
+                // Math.round arredonda para evitar problemas com casas decimais
                 centavos += Math.round(Number(item.dataset.preco) * 100);
             }
         });
 
+        // Converte os centavos para reais e formata como moeda brasileira
         total.textContent = (centavos / 100).toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL'
         });
     }
 
+    // Verifica quando um produto é marcado ou desmarcado
     itens.forEach(item => {
+
+       // Atualiza o total quando um produto é marcado ou desmarcado
         item.addEventListener('change', calcularTotal);
     });
 
+    // Calcula o total
     calcularTotal();
+    // Localiza o botão de finalizar pedido
+const finalizarPedido = document.getElementById("finalizarPedido");
+
+// Executa quando o usuário clica no botão
+finalizarPedido.addEventListener("click", function() {
+
+    // Cria uma lista para guardar os produtos selecionados
+    const produtos = [];
+
+    // Começa o total em zero
+    let centavos = 0;
+
+    // Verifica cada produto do cardápio
+    itens.forEach(item => {
+
+        // Verifica se o produto está selecionado
+        if (item.checked) {
+
+            // Pega o preço do produto
+            const preco = Number(item.dataset.preco);
+
+            // Guarda o nome e o preço do produto
+            produtos.push({
+                nome: item.value,
+                preco: preco
+            });
+
+            // Soma o valor do produto
+            centavos += Math.round(preco * 100);
+        }
+    });
+
+    // Impede finalizar um pedido sem produtos
+    if (produtos.length === 0) {
+        alert("Selecione pelo menos um produto.");
+        return;
+    }
+
+    // Junta os produtos e o total do pedido
+    const pedido = {
+        produtos: produtos,
+        total: centavos / 100
+    };
+
+    // Guarda temporariamente o pedido no navegador
+    sessionStorage.setItem("pedido", JSON.stringify(pedido));
+
+    // Abre a tela de resumo do pedido
+    window.location.href = "Pedido.html";
+});
+
 </script>
 
 </body>

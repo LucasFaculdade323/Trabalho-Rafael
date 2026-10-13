@@ -1,0 +1,71 @@
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Links de navegação */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Centraliza a caixa do pedido */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Caixa do resumo do pedido */
+.pedido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 85%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do pedido */
+.pedido h2 {
+    text-align: center;
+}
+
+/* Espaço onde aparecerão os produtos */
+#listaPedido {
+    margin: 20px 0;
+}
+
+/* Valor total */
+.pedido h3 {
+    text-align: right;
+}
+
+/* Botão de pagamento */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse */
+button:hover {
+    background-color: #555;
+}

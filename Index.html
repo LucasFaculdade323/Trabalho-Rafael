@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/style cadastro.css">
+    <link rel="stylesheet" href="css/style cadastro.css">  <!-- //linka o css esta buscando o css dentro da pasta -->
 </head>
 <body>
 
@@ -13,23 +13,33 @@
         <h1>Cadastro</h1>
 
         <nav>
-            <a href="index.html">Cadastro</a>
+            <!-- // Menu das páginas do cabeçalho -->
+            <a href="index.html">Cadastro</a> 
            <a href="cardapio.html">Cardápio</a>
         </nav>
     </header>
-
+       <!-- // conteudo principal da página -->
     <main>
         <div class="cadastro">
-            <h2>Cadastre-se</h2>
+            <h2>Cadastre-se</h2> <!--// caixa que contém o formulário -->
 
-            <form>
-               <form id="formCadastro"></form>
+            <form id="formCadastro"> <!-- Formulário identificado pelo JavaScript -->
+                <label for="ra">RA:</label> <!-- Informa o RA do Aluno  -->
+                <input type="text" id="ra" name="ra" placeholder="Digite seu RA" required>
+                <label for="nome">Nome:</label> <!-- Informa o Nome do Aluno -->
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                <label for="email">E-mail:</label> <!-- Informa o Email do Aluno -->
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
+                <label for="senha">Senha:</label> <!-- Informa a Senha do Alunos-->
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
 
+                <label for="confirmar">Confirmar senha:</label> <!-- Confirma a senha do Aluno-->
+                <input type="password" id="confirmar" name="confirmar" placeholder="Confirme sua senha" required>
+                <button type="submit">Cadastrar</button> <!-- Botão de enviar o formulário-->
             </form>
         </div>
     </main>
-            <script src="js/cadastro.js"></script>
-
+            <script src="js/cadastro.js"></script> <!-- Linka o js para fazer ele conversar com a página index.html-->
 </body>
 </html>
