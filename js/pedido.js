@@ -33,3 +33,8 @@ if (!pedido || !pedido.produtos || pedido.produtos.length === 0) {
         maximumFractionDigits: 2
     });
 }
+
+confirmarPedido.addEventListener("click", function() {
+    window.location.href = "pagamento.html";
+
+});

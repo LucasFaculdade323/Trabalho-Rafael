@@ -1,0 +1,87 @@
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho da página */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Links de navegação */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Centraliza a caixa de pagamento */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Caixa de pagamento */
+.pagamento {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 85%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do pagamento */
+.pagamento h2 {
+    text-align: center;
+}
+
+/* Valor total do pedido */
+.pagamento h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Organiza as opções de pagamento */
+#formPagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo das opções Pix, Cartão e Dinheiro */
+#formPagamento label {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Espaçamento dos botões de seleção */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Botão de confirmar pagamento */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse */
+button:hover {
+    background-color: #555;
+}

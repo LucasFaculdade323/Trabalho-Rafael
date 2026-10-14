@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="css/style pagamento.css">
+</head>
+<body>
+    <header>
+        <h1>Pagamento</h1>
+        <nav>
+            <a href="Pedido.html">Voltar ao pedido</a>
+
+        </nav>
+    </header>
+    <main>
+        <div class="pagamento">
+        <h2>Forma de Pagamento</h2>
+        <h3>Total R$ <span id="totalPagamento">0,00</span></h3>
+       <form id="formPagamento">
+       <label>
+        <input type="radio" name="pagamento" value="Pix" required>
+        Pix
+       </label>
+       <label>
+        <input type="radio" name="pagamento" value="Cartão">
+        Cartão 
+       </label>
+       <label>
+        <input type="radio" name="pagamento" value="Dinheiro">
+        Dinheiro
+       </label>
+        <button type="submit">Confirmar Pagamento</button>
+        </form>
+    </div>
+    </main>
+        <script src="js/pagamento.js"></script>
+</body>
+</html>

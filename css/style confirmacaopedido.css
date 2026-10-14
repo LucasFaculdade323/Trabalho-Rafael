@@ -1,0 +1,124 @@
+
+/* Configuração geral da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 26px;
+}
+
+/* Centraliza o conteúdo */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Caixa de confirmação */
+.confirmacao {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensagem de sucesso */
+.confirmacao h2 {
+    color: #2e7d32;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+/* Título dos produtos */
+.confirmacao h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Lista dos produtos */
+#produtosConfirmacao {
+    margin-bottom: 20px;
+}
+
+#produtosConfirmacao p {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+/* Total e forma de pagamento */
+.confirmacao > p {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* Valor total */
+#totalConfirmacao {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+/* Forma de pagamento */
+#formaPagamento {
+    font-weight: bold;
+}
+
+/* Botão para novo pedido */
+.confirmacao a {
+    display: block;
+    margin-top: 25px;
+    padding: 14px;
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Efeito ao passar o mouse */
+.confirmacao a:hover {
+    background-color: #1b5e20;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+    .confirmacao {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .confirmacao h2 {
+        font-size: 20px;
+    }
+}
