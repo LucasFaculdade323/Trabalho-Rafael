@@ -23,6 +23,7 @@
     <nav>
         <a href="index.html">Cadastro</a>
         <a href="cardapio.html">Cardápio</a>
+        <a href="estoque.html">Estoque</a>
     </nav>
 </header>
 
@@ -35,7 +36,7 @@
     <!-- Cada checkbox permite selecionar um produto -->
     <!-- data-preco armazena o valor utilizado no cálculo -->
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="coxinha" value="Coxinha">Coxinha — R$ 5,00</label>
-    <label><input type="checkbox" data-preco="5.00" name="entrada" id="esfiha" value="esfiha">esfiha — R$ 5,00</label>
+   <label><input type="checkbox" data-preco="5.00" name="entrada" id="esfiha" value="Esfiha">Esfiha — R$ 5,00</label>
     <label><input type="checkbox" data-preco="6.00" name="entrada" id="pastel" value="Pastel">Pastel — R$ 6,00</label>
     <label><input type="checkbox" data-preco="5.00" name="entrada" id="empada" value="Empada">Empada — R$ 5,00</label>
 
@@ -76,6 +77,7 @@
 <!-- JavaScript para cálcular os produtos -->
 <script>
 
+   
     // Seleciona todos os checkboxes que estão dentro do container
     const itens = document.querySelectorAll('.container input[type="checkbox"]');
 
@@ -85,10 +87,10 @@
     // Função responsável por calcular o valor dos produtos selecionados
     function calcularTotal() {
 
-        // Começa o cálculo com o valor de zero 
+        // Começa o cálculo com o valor de zero
         let centavos = 0;
 
-       // Verifica cada produto do cardápio, um por vez
+        // Verifica cada produto do cardápio, um por vez
         itens.forEach(item => {
 
             // Verifica se o produto está selecionado
@@ -110,62 +112,90 @@
     // Verifica quando um produto é marcado ou desmarcado
     itens.forEach(item => {
 
-       // Atualiza o total quando um produto é marcado ou desmarcado
+        // Atualiza o total quando um produto é marcado ou desmarcado
         item.addEventListener('change', calcularTotal);
     });
 
     // Calcula o total
     calcularTotal();
-    // Localiza o botão de finalizar pedido
-const finalizarPedido = document.getElementById("finalizarPedido");
 
-// Executa quando o usuário clica no botão
-finalizarPedido.addEventListener("click", function() {
+    // Verifica a disponibilidade dos produtos no estoque
+    itens.forEach(function(item) {
 
-    // Cria uma lista para guardar os produtos selecionados
-    const produtos = [];
+        // Recupera a quantidade salva no estoque
+        const quantidadeSalva = localStorage.getItem("estoque_" + item.value);
 
-    // Começa o total em zero
-    let centavos = 0;
+        // Verifica somente os produtos cadastrados no estoque
+        if (quantidadeSalva !== null) {
 
-    // Verifica cada produto do cardápio
-    itens.forEach(item => {
+            const quantidade = Number(quantidadeSalva);
 
-        // Verifica se o produto está selecionado
-        if (item.checked) {
+            // Bloqueia o produto quando não há unidades
+            if (quantidade === 0) {
+                item.disabled = true;
+                item.checked = false;
 
-            // Pega o preço do produto
-            const preco = Number(item.dataset.preco);
-
-            // Guarda o nome e o preço do produto
-            produtos.push({
-                nome: item.value,
-                preco: preco
-            });
-
-            // Soma o valor do produto
-            centavos += Math.round(preco * 100);
+                // Mostra que o produto está indisponível
+                item.parentElement.append(" (Indisponível)");
+            }
         }
     });
 
-    // Impede finalizar um pedido sem produtos
-    if (produtos.length === 0) {
-        alert("Selecione pelo menos um produto.");
-        return;
-    }
+    // Localiza o botão de finalizar pedido
+    const finalizarPedido = document.getElementById("finalizarPedido");
 
-    // Junta os produtos e o total do pedido
-    const pedido = {
-        produtos: produtos,
-        total: centavos / 100
-    };
+    // Executa quando o usuário clica no botão
+    finalizarPedido.addEventListener("click", function() {
 
-    // Guarda temporariamente o pedido no navegador
-    sessionStorage.setItem("pedido", JSON.stringify(pedido));
+        // Cria uma lista para guardar os produtos selecionados
+        const produtos = [];
 
-    // Abre a tela de resumo do pedido
-    window.location.href = "Pedido.html";
-});
+        // Começa o total em zero
+        let centavos = 0;
+
+        // Verifica cada produto do cardápio
+        itens.forEach(item => {
+
+            // Verifica se o produto está selecionado
+            if (item.checked && !item.disabled) {
+
+                // Pega o preço do produto
+                const preco = Number(item.dataset.preco);
+
+                // Guarda o nome e o preço do produto
+                produtos.push({
+                    nome: item.value,
+                    preco: preco
+                });
+
+                // Soma o valor do produto
+                centavos += Math.round(preco * 100);
+            }
+        });
+
+        // Impede finalizar um pedido sem produtos
+        if (produtos.length === 0) {
+            alert("Selecione pelo menos um produto.");
+            return;
+        }
+
+        // Junta os produtos e o total do pedido
+        const pedido = {
+            produtos: produtos,
+            total: centavos / 100
+        };
+
+       
+        // Guarda temporariamente o pedido no navegador
+        sessionStorage.setItem("pedido", JSON.stringify(pedido));
+
+        // Permite descontar o estoque do novo pedido
+        sessionStorage.removeItem("estoqueDescontado");
+
+        // Abre a tela de resumo do pedido
+        window.location.href = "Pedido.html";
+
+    });
 
 </script>
 

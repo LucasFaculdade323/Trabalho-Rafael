@@ -14,6 +14,32 @@ if (!pedido || !pedido.produtos || pedido.produtos.length === 0 || !pagamento) {
     window.location.href = "Cardapio.html";
 } else {
 
+    // Desconta o estoque somente uma vez por pedido
+    if (sessionStorage.getItem("estoqueDescontado") !== "sim") {
+
+        // Percorre os produtos comprados
+        pedido.produtos.forEach(function(produto) {
+
+            // Recupera a quantidade salva no estoque
+            const chave = "estoque_" + produto.nome;
+            const quantidadeSalva = localStorage.getItem(chave);
+
+            // Verifica se o produto possui controle de estoque
+            if (quantidadeSalva !== null) {
+
+                const quantidade = Number(quantidadeSalva);
+
+                // Diminui uma unidade, sem deixar negativo
+                if (quantidade > 0) {
+                    localStorage.setItem(chave, quantidade - 1);
+                }
+            }
+        });
+
+        // Registra que o estoque já foi descontado
+        sessionStorage.setItem("estoqueDescontado", "sim");
+    }
+
     // Mostra os produtos comprados
     pedido.produtos.forEach(function(produto) {
 

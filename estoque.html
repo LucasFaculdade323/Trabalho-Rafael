@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="css/style estoque.css">
+</head>
+<body>
+    <header>
+        <h1>Estoque</h1>
+
+        <nav>
+            <a href="Cardapio.html">Voltar ao Cardápio</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="estoque">
+            <h2>Controle de Estoque</h2>
+            <p>Confira a quantidade disponível de cada produto</p>
+
+            <div id="listaEstoque">
+
+                <div class="produto">
+                    <h3>Coxinha</h3>
+                    <p>Quantidade: <span class="quantidade">20</span></p>
+                    <p class="status">Status: Disponível</p>
+
+                    <button type="button" class="diminuir">−</button>
+                    <button type="button" class="aumentar">+</button>
+                </div>
+
+                <div class="produto">
+                    <h3>Esfiha</h3>
+                    <p>Quantidade: <span class="quantidade">15</span></p>
+                    <p class="status">Status: Disponível</p>
+
+                    <button type="button" class="diminuir">−</button>
+                    <button type="button" class="aumentar">+</button>
+                </div>
+
+                <div class="produto">
+                    <h3>Pastel</h3>
+                    <p>Quantidade: <span class="quantidade">0</span></p>
+                    <p class="status">Status: Indisponível</p>
+
+                    <button type="button" class="diminuir">−</button>
+                    <button type="button" class="aumentar">+</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/estoque.js"></script>
+</body>
+</html>
