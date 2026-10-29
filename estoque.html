@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style estoque.css">
 </head>
 <body>
+
     <header>
         <h1>Estoque</h1>
 
@@ -18,32 +19,90 @@
 
     <main>
         <div class="estoque">
+
             <h2>Controle de Estoque</h2>
             <p>Confira a quantidade disponível de cada produto</p>
 
+            <!-- Cadastro de novos produtos -->
+            <h2>Cadastrar Produto</h2>
+
+            <form id="formProduto">
+
+                <input
+                    type="text"
+                    id="nomeProduto"
+                    placeholder="Nome do produto"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="precoProduto"
+                    placeholder="Preço (R$)"
+                    min="0.01"
+                    step="0.01"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="quantidadeProduto"
+                    placeholder="Quantidade"
+                    min="0"
+                    step="1"
+                    required
+                >
+
+                <button type="submit" id="btnCadastrar">
+                    Cadastrar
+                </button>
+
+            </form>
+
+            <!-- Lista de produtos do estoque -->
+            <h2>Produtos Cadastrados</h2>
+
             <div id="listaEstoque">
 
+                <!-- Coxinha -->
                 <div class="produto">
                     <h3>Coxinha</h3>
-                    <p>Quantidade: <span class="quantidade">20</span></p>
+
+                    <p>
+                        Quantidade:
+                        <span class="quantidade">20</span>
+                    </p>
+
                     <p class="status">Status: Disponível</p>
 
                     <button type="button" class="diminuir">−</button>
                     <button type="button" class="aumentar">+</button>
                 </div>
 
+                <!-- Esfiha -->
                 <div class="produto">
                     <h3>Esfiha</h3>
-                    <p>Quantidade: <span class="quantidade">15</span></p>
+
+                    <p>
+                        Quantidade:
+                        <span class="quantidade">15</span>
+                    </p>
+
                     <p class="status">Status: Disponível</p>
 
                     <button type="button" class="diminuir">−</button>
                     <button type="button" class="aumentar">+</button>
                 </div>
 
+                <!-- Pastel -->
                 <div class="produto">
                     <h3>Pastel</h3>
-                    <p>Quantidade: <span class="quantidade">0</span></p>
+
+                    <p>
+                        Quantidade:
+                        <span class="quantidade">0</span>
+                    </p>
+
                     <p class="status">Status: Indisponível</p>
 
                     <button type="button" class="diminuir">−</button>
@@ -51,9 +110,11 @@
                 </div>
 
             </div>
+
         </div>
     </main>
 
     <script src="js/estoque.js"></script>
+
 </body>
 </html>
