@@ -81,7 +81,56 @@
 
    
     // Seleciona todos os checkboxes que estão dentro do container
+   
+    // Recupera os produtos cadastrados no estoque
+    const produtosCadastrados = JSON.parse(
+        localStorage.getItem("produtosCadastrados") || "[]"
+    );
+
+    // Recupera os produtos excluídos
+    const produtosExcluidos = JSON.parse(
+        localStorage.getItem("produtosExcluidos") || "[]"
+    );
+
+    const novosProdutos = document.getElementById("novosProdutos");
+
+    // Remove do cardápio os produtos excluídos ou editados
+    document.querySelectorAll('.container input[type="checkbox"]').forEach(function(item) {
+        if (
+            produtosExcluidos.includes(item.value) ||
+            produtosCadastrados.some(function(produto) {
+                return produto.nome === item.value;
+            })
+        ) {
+            item.parentElement.remove();
+        }
+    });
+
+    // Adiciona os produtos cadastrados ao cardápio
+    produtosCadastrados.forEach(function(produto) {
+
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.name = "entrada";
+        checkbox.value = produto.nome;
+        checkbox.dataset.preco = produto.preco;
+
+        const precoFormatado = Number(produto.preco).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+
+        label.appendChild(checkbox);
+        label.append(" " + produto.nome + " — " + precoFormatado);
+
+        novosProdutos.appendChild(label);
+    });
+
+    // Seleciona todos os produtos, incluindo os novos
     const itens = document.querySelectorAll('.container input[type="checkbox"]');
+
 
     // Localiza o elemento HTML onde o total será exibido
     const total = document.getElementById('total');
@@ -191,8 +240,17 @@
         // Guarda temporariamente o pedido no navegador
         sessionStorage.setItem("pedido", JSON.stringify(pedido));
 
+       
         // Permite descontar o estoque do novo pedido
         sessionStorage.removeItem("estoqueDescontado");
+
+        // Limpa os dados de devolução do pedido anterior
+        sessionStorage.removeItem("estoqueDevolvido");
+        sessionStorage.removeItem("produtosDescontados");
+
+        // Inicia o novo pedido com o status correto
+        sessionStorage.setItem("statusPedido", "Em preparação");
+ 
 
         // Abre a tela de resumo do pedido
         window.location.href = "Pedido.html";

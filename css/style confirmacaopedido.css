@@ -122,3 +122,71 @@ main {
         font-size: 20px;
     }
 }
+
+
+/* Sprint 5 - Acompanhamento do pedido */
+
+/* Campo para selecionar o status */
+#selecionarStatus {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Botão de atualizar status */
+#atualizarStatus {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#atualizarStatus:hover:not(:disabled) {
+    background-color: #1b5e20;
+}
+
+/* Botão de cancelar pedido */
+#cancelarPedido {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#cancelarPedido:hover:not(:disabled) {
+    background-color: #b71c1c;
+}
+
+/* Botões desativados */
+#atualizarStatus:disabled,
+#cancelarPedido:disabled,
+#selecionarStatus:disabled {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 480px) {
+    #selecionarStatus,
+    #atualizarStatus,
+    #cancelarPedido {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

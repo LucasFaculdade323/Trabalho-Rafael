@@ -22,6 +22,20 @@
         <p>Total: R$ <span id="totalConfirmacao">0,00</span></p>
 
         <p>Forma de Pagamento:  <span id="formaPagamento"></span></p>
+        <h3>Acompanhamento do Pedido</h3>
+        <p>Status: <strong id="statusPedido">Em preparação</strong></p>
+        <h3>Atualizar Status</h3>
+
+    <select id="selecionarStatus">
+    <option value="Em preparação">Em preparação</option>
+    <option value="Pronto">Pronto</option>
+    <option value="Entregue">Entregue</option>
+    </select>
+
+    <button type="button" id="atualizarStatus">Atualizar Status</button>
+    <h3>Cancelamento do Pedido</h3>
+
+    <button type="button" id="cancelarPedido">Cancelar Pedido</button>
 
         
         <a href="Cardapio.html">Fazer novo pedido</a>
@@ -31,3 +45,5 @@
     </div>
     <script src="js/confirmacaopedido.js"></script>
   </main>
+  </body>
+</html>
